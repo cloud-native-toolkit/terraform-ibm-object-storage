@@ -1,4 +1,4 @@
-module "dev_tools_mymodule" {
+module "dev_object-storage" {
   source = "./module"
 
   provision = true
