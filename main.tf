@@ -32,9 +32,10 @@ resource "ibm_resource_instance" "cos_instance" {
 }
 
 resource "ibm_resource_key" "cos_credentials" {
+  count             = var.provision ? 1 : 0
 
   name                 = "${local.name}-key"
-  resource_instance_id = data.ibm_resource_instance.cos_instance[0].id
+  resource_instance_id = ibm_resource_instance.cos_instance[0].id
   role                 = local.role
 
   //User can increase timeouts
