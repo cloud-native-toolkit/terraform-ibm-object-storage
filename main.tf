@@ -1,6 +1,3 @@
-provider "ibm" {
-  version = ">= 1.2.1"
-}
 
 data "ibm_resource_group" "resource_group" {
   name = var.resource_group_name
@@ -10,6 +7,7 @@ locals {
   role        = "Manager"
   name_prefix = var.name_prefix != "" ? var.name_prefix : var.resource_group_name
   name        = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-cos"
+  key_name    = "${local.name}-key"
   module_path = substr(path.module, 0, 1) == "/" ? path.module : "./${path.module}"
 }
 
@@ -34,7 +32,7 @@ resource "ibm_resource_instance" "cos_instance" {
 resource "ibm_resource_key" "cos_credentials" {
   count             = var.provision ? 1 : 0
 
-  name                 = "${local.name}-key"
+  name                 = local.key_name
   resource_instance_id = ibm_resource_instance.cos_instance[0].id
   role                 = local.role
 
