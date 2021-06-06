@@ -23,7 +23,7 @@ None
 
 ```hcl-terraform
 module "cos" {
-  ssource = "github.com/cloud-native-toolkit/terraform-ibm-object-storage.git?ref=v3.2.0"
+  source = "github.com/cloud-native-toolkit/terraform-ibm-object-storage.git"
 
   resource_group_name = var.resource_group_name
   name_prefix         = var.name_prefix
