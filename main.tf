@@ -17,8 +17,8 @@ locals {
   name        = var.name != "" ? var.name : "${replace(local.name_prefix, "/[^a-zA-Z0-9_\\-\\.]/", "")}-${var.label}"
   key_name    = "${local.name}-key"
   module_path = substr(path.module, 0, 1) == "/" ? path.module : "./${path.module}"
-  tags        = setsubtract(var.tags, [""])
   service     = "cloud-object-storage"
+  tags        = setsubtract(distinct(concat(var.common_tags, var.tags)), [""])
 }
 
 // COS Cloud Object Storage
