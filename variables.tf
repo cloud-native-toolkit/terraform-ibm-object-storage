@@ -52,3 +52,9 @@ variable "ibmcloud_api_key" {
   sensitive   = true
   default     = ""
 }
+
+variable "common_tags" {
+  type        = list(string)
+  default     = []
+  description = "Common tags that should be added to the instance"
+}
