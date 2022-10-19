@@ -48,4 +48,17 @@ if [[ "${STATUS}" -ne 200 ]]; then
   exit 1
 fi
 
+count=0
+STATE=$(curl -s -X GET -H "Authorization: Bearer ${IAM_TOKEN}" "https://resource-controller.cloud.ibm.com/v2/resource_instances/${INSTANCE_GUID}" | jq -r '.state')
+until [[ "${STATE}" == "active" ]] || [[ "${count}" -eq 25 ]]; do
+  count=$((count + 1))
+  sleep 30
+  STATE=$(curl -s -X GET -H "Authorization: Bearer ${IAM_TOKEN}" "https://resource-controller.cloud.ibm.com/v2/resource_instances/${INSTANCE_GUID}" | jq -r '.state')
+done
+
+if [[ "${STATE}" != "active" ]]; then
+  echo "Timed out waiting for instance to become active: ${STATE}" >&2
+  exit 1
+fi
+
 jq -n --arg ID "${INSTANCE_ID}" --arg NAME "${INSTANCE_NAME}" --arg GUID "${INSTANCE_GUID}" '{"id": $ID, "name": $NAME, "guid": $GUID}'
