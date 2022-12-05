@@ -36,7 +36,9 @@ module "cos" {
 <!-- BEGIN EXAMPLES HOOK -->
 ## Examples
 
-- [ COS Bucket with Tracking and Monitoring Enabled](examples/complete)
+- [ Default example](examples/default)
+- [ Example that uses existing resources](examples/existing-resources)
+- [ Non default example](examples/non-default)
 <!-- END EXAMPLES HOOK -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -52,7 +54,7 @@ module "cos" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_clis"></a> [clis](#module\_clis) | cloud-native-toolkit/clis/util | 1.18.1 |
+| <a name="module_clis"></a> [clis](#module\_clis) | cloud-native-toolkit/clis/util | 1.16.4 |
 
 ## Resources
 
@@ -70,7 +72,7 @@ module "cos" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Common tags that should be added to the instance | `list(string)` | `[]` | no |
-| <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | The ibmcloud api key used to test that instance is ready | `string` | n/a | yes |
+| <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | The ibmcloud api key used to test that instance is ready | `string` | `""` | no |
 | <a name="input_label"></a> [label](#input\_label) | The name that should be used for the service, particularly when connecting to an existing service. If not provided then the name will be defaulted to {name prefix}-{service} | `string` | `"cos"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name that should be used for the service, particularly when connecting to an existing service. If not provided then the name will be defaulted to {name prefix}-{service} | `string` | `""` | no |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | The prefix name for the service. If not provided it will default to the resource group name | `string` | `""` | no |

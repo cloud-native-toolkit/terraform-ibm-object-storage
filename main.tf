@@ -63,7 +63,7 @@ resource "ibm_resource_key" "cos_credentials" {
 
 module "clis" {
   source  = "cloud-native-toolkit/clis/util"
-  version = "1.18.1"
+  version = "1.16.4"
 
   clis = ["jq"]
 }

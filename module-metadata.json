@@ -8,14 +8,14 @@
       "default": [],
       "pos": {
         "filename": "variables.tf",
-        "line": 55
+        "line": 56
       }
     },
     "ibmcloud_api_key": {
       "name": "ibmcloud_api_key",
       "type": "string",
       "description": "The ibmcloud api key used to test that instance is ready",
-      "required": true,
+      "default": "",
       "sensitive": true,
       "pos": {
         "filename": "variables.tf",
@@ -325,7 +325,7 @@
     "clis": {
       "name": "clis",
       "source": "cloud-native-toolkit/clis/util",
-      "version": "1.18.1",
+      "version": "1.16.4",
       "managed_resources": {
         "null_resource.print": {
           "mode": "managed",
