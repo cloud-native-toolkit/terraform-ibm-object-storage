@@ -1,0 +1,376 @@
+{
+  "path": ".",
+  "variables": {
+    "common_tags": {
+      "name": "common_tags",
+      "type": "list(string)",
+      "description": "Common tags that should be added to the instance",
+      "default": [],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 56
+      }
+    },
+    "ibmcloud_api_key": {
+      "name": "ibmcloud_api_key",
+      "type": "string",
+      "description": "The ibmcloud api key used to test that instance is ready",
+      "default": "",
+      "sensitive": true,
+      "pos": {
+        "filename": "variables.tf",
+        "line": 49
+      }
+    },
+    "label": {
+      "name": "label",
+      "type": "string",
+      "description": "The name that should be used for the service, particularly when connecting to an existing service. If not provided then the name will be defaulted to {name prefix}-{service}",
+      "default": "cos",
+      "pos": {
+        "filename": "variables.tf",
+        "line": 43
+      }
+    },
+    "name": {
+      "name": "name",
+      "type": "string",
+      "description": "The name that should be used for the service, particularly when connecting to an existing service. If not provided then the name will be defaulted to {name prefix}-{service}",
+      "default": "",
+      "pos": {
+        "filename": "variables.tf",
+        "line": 37
+      }
+    },
+    "name_prefix": {
+      "name": "name_prefix",
+      "type": "string",
+      "description": "The prefix name for the service. If not provided it will default to the resource group name",
+      "default": "",
+      "pos": {
+        "filename": "variables.tf",
+        "line": 19
+      }
+    },
+    "plan": {
+      "name": "plan",
+      "type": "string",
+      "description": "The type of plan the service instance should run under (lite or standard)",
+      "default": "standard",
+      "required": true,
+      "source": [
+        "ibm_resource_instance.cos_instance.plan"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 25
+      }
+    },
+    "provision": {
+      "name": "provision",
+      "type": "bool",
+      "description": "Flag indicating that cos instance should be provisioned",
+      "default": true,
+      "source": [
+        "ibm_resource_instance.cos_instance.count"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 31
+      }
+    },
+    "resource_group_name": {
+      "name": "resource_group_name",
+      "type": "string",
+      "description": "Resource group where the cluster has been provisioned.",
+      "required": true,
+      "source": [
+        "data.ibm_resource_group.resource_group.name"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 2
+      },
+      "cloud_data_type": "resource_group",
+      "computed": true,
+      "cloud_data_range": [
+        "resolved_to:name"
+      ]
+    },
+    "resource_location": {
+      "name": "resource_location",
+      "type": "string",
+      "description": "Geographic location of the resource (e.g. us-south, us-east)",
+      "default": "global",
+      "required": true,
+      "source": [
+        "data.ibm_resource_instance.cos_instance.location",
+        "ibm_resource_instance.cos_instance.location"
+      ],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 7
+      },
+      "cloud_data_type": "region",
+      "immutable": true,
+      "computed": true
+    },
+    "tags": {
+      "name": "tags",
+      "type": "list(string)",
+      "description": "Tags that should be applied to the service",
+      "default": [],
+      "pos": {
+        "filename": "variables.tf",
+        "line": 13
+      }
+    }
+  },
+  "outputs": {
+    "crn": {
+      "name": "crn",
+      "description": "The crn of the Object Storage instance",
+      "value": "data.external.instance.result.id",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 13
+      }
+    },
+    "id": {
+      "name": "id",
+      "description": "The Object Storage instance id",
+      "value": "data.external.instance.result.id",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 1
+      }
+    },
+    "key_id": {
+      "name": "key_id",
+      "description": "The name of the credential provisioned for the Object Storage instance",
+      "value": "ibm_resource_key.cos_credentials.id",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 31
+      }
+    },
+    "key_name": {
+      "name": "key_name",
+      "description": "The name of the credential provisioned for the Object Storage instance",
+      "value": "local.key_name",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 25
+      }
+    },
+    "label": {
+      "name": "label",
+      "description": "The name that should be used for the service, particularly when connecting to an existing service. If not provided then the name will be defaulted to {name prefix}-{service}",
+      "value": "var.label",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 42
+      },
+      "type": "string"
+    },
+    "location": {
+      "name": "resource_location",
+      "description": "Geographic location of the resource (e.g. us-south, us-east)",
+      "value": "var.resource_location",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 19
+      },
+      "type": "string",
+      "cloud_data_type": "region"
+    },
+    "name": {
+      "name": "name",
+      "description": "The Object Storage instance name",
+      "value": "data.external.instance.result.name",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 7
+      }
+    },
+    "service": {
+      "name": "service",
+      "description": "The name of the key provisioned for the Object Storage instance",
+      "value": "local.service",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 36
+      }
+    },
+    "type": {
+      "name": "type",
+      "description": "The type of the resource",
+      "pos": {
+        "filename": "outputs.tf",
+        "line": 48
+      }
+    }
+  },
+  "required_core": [
+    "\u003e= 0.15.0"
+  ],
+  "required_providers": {
+    "external": {},
+    "ibm": {
+      "source": "ibm-cloud/ibm",
+      "version_constraints": [
+        "\u003e= 1.18.0"
+      ]
+    },
+    "null": {}
+  },
+  "managed_resources": {
+    "ibm_resource_instance.cos_instance": {
+      "mode": "managed",
+      "type": "ibm_resource_instance",
+      "name": "cos_instance",
+      "attributes": {
+        "count": "provision",
+        "location": "resource_location",
+        "plan": "plan"
+      },
+      "provider": {
+        "name": "ibm"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 25
+      }
+    },
+    "ibm_resource_key.cos_credentials": {
+      "mode": "managed",
+      "type": "ibm_resource_key",
+      "name": "cos_credentials",
+      "provider": {
+        "name": "ibm"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 51
+      }
+    },
+    "null_resource.print_names": {
+      "mode": "managed",
+      "type": "null_resource",
+      "name": "print_names",
+      "provider": {
+        "name": "null"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 2
+      }
+    }
+  },
+  "data_resources": {
+    "data.external.instance": {
+      "mode": "data",
+      "type": "external",
+      "name": "instance",
+      "provider": {
+        "name": "external"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 72
+      }
+    },
+    "data.ibm_resource_group.resource_group": {
+      "mode": "data",
+      "type": "ibm_resource_group",
+      "name": "resource_group",
+      "attributes": {
+        "name": "resource_group_name"
+      },
+      "provider": {
+        "name": "ibm"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 8
+      }
+    },
+    "data.ibm_resource_instance.cos_instance": {
+      "mode": "data",
+      "type": "ibm_resource_instance",
+      "name": "cos_instance",
+      "attributes": {
+        "location": "resource_location"
+      },
+      "provider": {
+        "name": "ibm"
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 42
+      }
+    }
+  },
+  "module_calls": {
+    "clis": {
+      "name": "clis",
+      "source": "cloud-native-toolkit/clis/util",
+      "version": "1.16.4",
+      "managed_resources": {
+        "null_resource.print": {
+          "mode": "managed",
+          "type": "null_resource",
+          "name": "print",
+          "provider": {
+            "name": "null"
+          },
+          "pos": {
+            "filename": ".terraform/modules/clis/main.tf",
+            "line": 6
+          }
+        },
+        "random_string.uuid": {
+          "mode": "managed",
+          "type": "random_string",
+          "name": "uuid",
+          "provider": {
+            "name": "random"
+          },
+          "pos": {
+            "filename": ".terraform/modules/clis/main.tf",
+            "line": 12
+          }
+        }
+      },
+      "data_resources": {
+        "data.external.setup-binaries": {
+          "mode": "data",
+          "type": "external",
+          "name": "setup-binaries",
+          "provider": {
+            "name": "external"
+          },
+          "pos": {
+            "filename": ".terraform/modules/clis/main.tf",
+            "line": 19
+          }
+        }
+      },
+      "outputs": {
+        "bin_dir": {
+          "name": "bin_dir",
+          "description": "Directory where the clis were downloaded",
+          "value": "data.external.setup-binaries.result.bin_dir",
+          "pos": {
+            "filename": ".terraform/modules/clis/outputs.tf",
+            "line": 1
+          }
+        }
+      },
+      "pos": {
+        "filename": "main.tf",
+        "line": 65
+      }
+    }
+  }
+}
