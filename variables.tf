@@ -25,6 +25,10 @@ variable "plan" {
   type        = string
   description = "The type of plan the service instance should run under (lite or standard)"
   default     = "standard"
+  validation {
+    condition     = contains(["standard", "lite"], var.plan)
+    error_message = "The specified cos_plan is not a valid selection!"
+  }
 }
 
 variable "provision" {

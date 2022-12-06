@@ -8,7 +8,7 @@
       "default": [],
       "pos": {
         "filename": "variables.tf",
-        "line": 54
+        "line": 58
       }
     },
     "ibmcloud_api_key": {
@@ -19,7 +19,7 @@
       "sensitive": true,
       "pos": {
         "filename": "variables.tf",
-        "line": 48
+        "line": 52
       }
     },
     "label": {
@@ -29,7 +29,7 @@
       "default": "cos",
       "pos": {
         "filename": "variables.tf",
-        "line": 42
+        "line": 46
       }
     },
     "name": {
@@ -39,7 +39,7 @@
       "default": "",
       "pos": {
         "filename": "variables.tf",
-        "line": 36
+        "line": 40
       }
     },
     "name_prefix": {
@@ -76,7 +76,7 @@
       ],
       "pos": {
         "filename": "variables.tf",
-        "line": 30
+        "line": 34
       }
     },
     "resource_group_name": {
