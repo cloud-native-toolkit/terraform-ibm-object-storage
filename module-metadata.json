@@ -8,18 +8,18 @@
       "default": [],
       "pos": {
         "filename": "variables.tf",
-        "line": 56
+        "line": 54
       }
     },
     "ibmcloud_api_key": {
       "name": "ibmcloud_api_key",
       "type": "string",
       "description": "The ibmcloud api key used to test that instance is ready",
-      "default": "",
+      "required": true,
       "sensitive": true,
       "pos": {
         "filename": "variables.tf",
-        "line": 49
+        "line": 48
       }
     },
     "label": {
@@ -29,7 +29,7 @@
       "default": "cos",
       "pos": {
         "filename": "variables.tf",
-        "line": 43
+        "line": 42
       }
     },
     "name": {
@@ -39,7 +39,7 @@
       "default": "",
       "pos": {
         "filename": "variables.tf",
-        "line": 37
+        "line": 36
       }
     },
     "name_prefix": {
@@ -49,7 +49,7 @@
       "default": "",
       "pos": {
         "filename": "variables.tf",
-        "line": 19
+        "line": 18
       }
     },
     "plan": {
@@ -63,7 +63,7 @@
       ],
       "pos": {
         "filename": "variables.tf",
-        "line": 25
+        "line": 24
       }
     },
     "provision": {
@@ -76,7 +76,7 @@
       ],
       "pos": {
         "filename": "variables.tf",
-        "line": 31
+        "line": 30
       }
     },
     "resource_group_name": {
@@ -89,7 +89,7 @@
       ],
       "pos": {
         "filename": "variables.tf",
-        "line": 2
+        "line": 1
       },
       "cloud_data_type": "resource_group",
       "computed": true,
@@ -109,7 +109,7 @@
       ],
       "pos": {
         "filename": "variables.tf",
-        "line": 7
+        "line": 6
       },
       "cloud_data_type": "region",
       "immutable": true,
@@ -122,7 +122,7 @@
       "default": [],
       "pos": {
         "filename": "variables.tf",
-        "line": 13
+        "line": 12
       }
     }
   },
@@ -215,14 +215,24 @@
     "\u003e= 0.15.0"
   ],
   "required_providers": {
-    "external": {},
+    "external": {
+      "source": "hashicorp/external",
+      "version_constraints": [
+        "\u003e=2.2.3"
+      ]
+    },
     "ibm": {
       "source": "ibm-cloud/ibm",
       "version_constraints": [
         "\u003e= 1.18.0"
       ]
     },
-    "null": {}
+    "null": {
+      "source": "hashicorp/null",
+      "version_constraints": [
+        "\u003e=3.2.1"
+      ]
+    }
   },
   "managed_resources": {
     "ibm_resource_instance.cos_instance": {
@@ -239,7 +249,7 @@
       },
       "pos": {
         "filename": "main.tf",
-        "line": 25
+        "line": 24
       }
     },
     "ibm_resource_key.cos_credentials": {
@@ -251,7 +261,7 @@
       },
       "pos": {
         "filename": "main.tf",
-        "line": 51
+        "line": 50
       }
     },
     "null_resource.print_names": {
@@ -277,7 +287,7 @@
       },
       "pos": {
         "filename": "main.tf",
-        "line": 72
+        "line": 71
       }
     },
     "data.ibm_resource_group.resource_group": {
@@ -307,7 +317,7 @@
       },
       "pos": {
         "filename": "main.tf",
-        "line": 42
+        "line": 41
       }
     }
   },
@@ -315,7 +325,7 @@
     "clis": {
       "name": "clis",
       "source": "cloud-native-toolkit/clis/util",
-      "version": "1.16.4",
+      "version": "1.18.1",
       "managed_resources": {
         "null_resource.print": {
           "mode": "managed",
@@ -369,7 +379,7 @@
       },
       "pos": {
         "filename": "main.tf",
-        "line": 65
+        "line": 64
       }
     }
   }

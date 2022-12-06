@@ -1,4 +1,3 @@
-
 variable "resource_group_name" {
   type        = string
   description = "Resource group where the cluster has been provisioned."
@@ -50,7 +49,6 @@ variable "ibmcloud_api_key" {
   type        = string
   description = "The ibmcloud api key used to test that instance is ready"
   sensitive   = true
-  default     = ""
 }
 
 variable "common_tags" {
