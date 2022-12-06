@@ -50,7 +50,6 @@ variable "ibmcloud_api_key" {
   type        = string
   description = "The ibmcloud api key used to test that instance is ready"
   sensitive   = true
-  default     = ""
 }
 
 variable "common_tags" {
